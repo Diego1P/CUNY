@@ -1,0 +1,32 @@
+{% extends "register/base.html"%}
+{% block content %}
+	
+	<h1>Student Center</h1>
+
+	{% for class in classes %}
+		<h3> {{ class.course_name }}</h1>
+		<p> {{ class.course_id }} </p>
+		<p> {{ class.instructor }} </p>
+		<p> {{ class.day }} {{ class.time }}</p>
+		<p> {{ class.location }} </p>
+	{% endfor %}
+
+{% endblock content %}
+
+
+
+
+<!--
+
+classes = [
+
+ {
+ 	'course_name' : 'Software Engineering',
+ 	'course_id' : 'CSC 32200'
+ 	'instructor' : 'Jie Wei',
+ 	'day' : 'TuThu', 
+ 	'time' : '12:00 - 14:15',
+ 	'location' : 'online synchronous',
+ }
+
+-->
