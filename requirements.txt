@@ -1,0 +1,2 @@
+Django==3.2.8
+django-crisp-forms==1.1.13
