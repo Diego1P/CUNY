@@ -5,6 +5,4 @@ class RegisterConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'register'
 
-
-#new comment
-#adding a new comment to this
+#main editing
