@@ -1,8 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-
-
 classes = [
 
  {
@@ -26,13 +24,16 @@ classes = [
 
 ]
 
-def home(request):
-	return render(request, 'register/home.html')
+def personal(request):
+	return render(request, 'register/personal.html')
 
-def scenter(request):
+def landing(request):
+	return render(request, 'register/landing.html')
+
+def course(request):
 
 	context = {
 		'classes' : classes
 	}
 
-	return render(request, 'register/scenter.html', context)
+	return render(request, 'register/course_page.html', context)
