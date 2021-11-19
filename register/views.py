@@ -43,10 +43,17 @@ def scenter(request):
     return render(request, 'register/scenter.html', context)
 
 
+
+def save_file(f):
+    with open('register/static/uploads/'+f.name,'wb+') as destination:
+        for chunk in f.chunks():
+            destination.write(chunk)
+
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST, request.FILES)
         if form.is_valid():
+            save_file(request.FILES['file'])
             form.save()
             username = form.cleaned_data.get('username')
             messages.success(
