@@ -41,7 +41,7 @@ def course(request):
         'classes': classes
     }
 
-    return render(request, 'register/scenter.html', context)
+    return render(request, 'register/course_page.html', context)
 
 
 
