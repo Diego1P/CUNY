@@ -46,7 +46,7 @@ def course(request):
 
 
 def save_file(f):
-    with open('register/static/uploads/'+f.name,'wb+') as destination:
+    with open('register/uploads/'+f.name,'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 

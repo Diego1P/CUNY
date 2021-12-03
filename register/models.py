@@ -25,5 +25,3 @@ class Course(models.Model):
 # 	'day' : 'TuThu', 
 #	'time' : '10:00 - 11:50',
 #	'location' : 'online synchronous',
- 
-

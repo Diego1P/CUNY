@@ -14,8 +14,8 @@ TeacherorStudent =(
 )
 
 class UserRegisterForm(UserCreationForm):
-    firstName = forms.CharField(max_length=100)
-    lastName = forms.CharField(max_length=100)
+    first_name = forms.CharField(max_length=100)
+    last_name = forms.CharField(max_length=100)
     Date_Of_birth = forms.DateField(widget=forms.SelectDateWidget(years=sorted(year_choice, reverse=True)))
     Teacher_or_Student = forms.ChoiceField(choices=TeacherorStudent)
     file = forms.FileField(required=True)
@@ -23,5 +23,5 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['firstName', 'lastName', 'Date_Of_birth', 'Teacher_or_Student', 'username', 'email', 'file',
+        fields = ['first_name', 'last_name', 'Date_Of_birth', 'Teacher_or_Student', 'username', 'email', 'file',
                   'password1', 'password2']
