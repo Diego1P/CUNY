@@ -26,3 +26,4 @@ class Course(models.Model):
 #	'time' : '10:00 - 11:50',
 #	'location' : 'online synchronous',
  
+
