@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 
-
 classes = [
 
     {
@@ -30,11 +29,13 @@ classes = [
 ]
 
 
-def home(request):
-    return render(request, 'register/home.html')
+def personal(request):
+	return render(request, 'register/personal.html')
 
+def landing(request):
+	return render(request, 'register/landing.html')
 
-def scenter(request):
+def course(request):
 
     context = {
         'classes': classes
@@ -62,3 +63,7 @@ def register(request):
     else:
         form = UserRegisterForm()
     return render(request, 'register/register.html', {'form': form})
+
+  #return render(request, 'register/course_page.html', context)
+  #this was in the main file, may be needed?
+
