@@ -1,6 +1,8 @@
+from typing_extensions import Required
 from django.db import models
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
+
 
 def registraion_period():
 	return datetime.now() + timedelta(days=21)
@@ -25,3 +27,11 @@ class Course(models.Model):
 # 	'day' : 'TuThu', 
 #	'time' : '10:00 - 11:50',
 #	'location' : 'online synchronous',
+ 
+
+class Profile(models.Model):
+	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	file = models.FileField(upload_to='uploads')
+
+	def __str__(self):
+		return self.user.username
