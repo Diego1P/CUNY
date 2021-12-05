@@ -27,11 +27,20 @@ class Course(models.Model):
 # 	'day' : 'TuThu', 
 #	'time' : '10:00 - 11:50',
 #	'location' : 'online synchronous',
- 
+
+
 
 class Profile(models.Model):
+
+	TeacherorStudent =(
+    ("teacher", "Teacher"),
+    ("student", "Student"),
+	)
+
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	Teacher_or_Student = models.CharField(blank=False, max_length=7, choices=TeacherorStudent)
 	file = models.FileField(upload_to='uploads')
+
 
 	def __str__(self):
 		return self.user.username

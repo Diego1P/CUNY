@@ -27,8 +27,7 @@ classes = [
         'rating' : '2/5',
         'status' : 'closed',
     },
-
-     {
+    {
         'course_name': 'History of the United States',
         'course_id': 'HIST 24000',
         'instructor': 'Michael Vulis',
@@ -38,9 +37,7 @@ classes = [
         'rating' : '5/5',
         'status' : 'open',
     },
-
     {
-
         'course_name': 'Compiler Construction',
         'course_id': 'CSC 42000',
         'instructor': 'Matthew Vaz',
@@ -51,9 +48,7 @@ classes = [
         'status' : 'open',
 
     },
-
     {
-
         'course_name': 'Methods of Differential Equations',
         'course_id': 'Math 39100',
         'instructor': 'G. Yassiyevic',
@@ -63,9 +58,7 @@ classes = [
         'rating' : '3/5',
         'status' : 'full',
     },
-
     {
-
         'course_name': 'Calculus I',
         'course_id': 'Math 20100',
         'instructor': 'K. Ravindran',
@@ -144,3 +137,7 @@ def register(request):
 
   #return render(request, 'register/course_page.html', context)
   #this was in the main file, may be needed?
+
+@login_required
+def profile(request):
+    return render(request, 'register/profile.html')
