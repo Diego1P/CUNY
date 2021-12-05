@@ -1,0 +1,12 @@
+{% extends "register/base.html"%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    
+    <p> Username: {{  user.username }}</p>
+    <p> First Name: {{ user.first_name }}</p>
+    <p> Last Name: {{ user.last_name }}</p>
+    <p> Email: {{ user.email }}</p>
+
+
+{% endblock content %}

@@ -70,3 +70,7 @@ def register(request):
 
   #return render(request, 'register/course_page.html', context)
   #this was in the main file, may be needed?
+
+@login_required
+def profile(request):
+    return render(request, 'register/profile.html')
