@@ -1,6 +1,71 @@
 {% extends "register/base.html"%}
 {% block content %}
-	<h1>
-		list classes here
-	</h1>
+
+	<div class="container"> 
+
+		<div class="row align-items-center">
+			<div class="col">
+
+				<table class="table table-bordered">
+					<thead>
+					  <tr>
+						<th scope="col">Top Rate Courses</th>
+						<th scope="col"> Course Id </th>
+						<th scope="col">Rating</th>
+						<th scope="col">Staus</th>
+					  </tr>
+					</thead>
+					<tbody>
+					{% for class in classes %}
+
+					  <tr>
+						<th scope="row">{{ class.course_name }}</th>
+						<td>{{ class.course_id }} </td>
+						<td>{{ class.rating }} </td>
+
+						{% if class.status == 'open' %}
+							<td> <button type="button" class="btn btn-success">OPEN</button> </td>
+						{% elif class.status == 'full' %}
+							<td> <button type="button" class="btn btn-warning">WATILIST</button> </td>
+						{% else %}
+							<td> <button type="button" class="btn btn-danger">CLOSED</button> </td>
+						{% endif %}			
+
+					  </tr>
+
+					{% endfor %}
+					</tbody>
+				</table>
+
+			</div>
+			<!-- this seperates the left and right columns-->
+
+			<div class="col">
+
+				<table class="table table-bordered">
+					<thead>
+					  <tr>
+						<th scope="col">Top Rated Students</th>
+						<th scope="col"> Student Id</th>
+					  </tr>
+					</thead>
+					<tbody>
+					{% for student in students %}
+
+					  <tr>
+						<th scope="row">{{ student.student }}</th>
+						<td>{{ student.student_id }} </td>
+					  </tr>
+
+					{% endfor %}
+					</tbody>
+				</table>
+
+			</div>
+
+
+		</div>
+
+	</div>
+
 {% endblock content %}
