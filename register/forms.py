@@ -22,6 +22,16 @@ class UserRegisterForm(UserCreationForm):
             'password1', 
             'password2']
 
+    def clean(self):
+        cleaned_data = super(UserRegisterForm, self).clean()
+        email = cleaned_data.get("email")
+
+        check_email = User.objects.filter(email=email)
+        if check_email:
+            raise forms.ValidationError("A user with the same email is already registered!")
+            return cleaned_data
+
+
 class UserprofileForm(forms.ModelForm):
     class Meta:
         model = Profile
