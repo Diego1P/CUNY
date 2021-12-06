@@ -17,7 +17,7 @@ def personal(request):
 	context = {
 		'enrolled': enrolled,
 	}
-	print(context)
+	#print(context)
 	return render(request, 'register/personal.html',context)
 
 def landing(request):
@@ -25,12 +25,14 @@ def landing(request):
         'classes': Course.objects.all(),
         'students':Profile.objects.filter(Teacher_or_Student='student'),
     }
-    print(context)
+    #print(context)
     return render(request, 'register/landing.html', context)
 
 def course(request):
+    data = dict([(str(e.Course), str(e.Instructor)) for e in Teaches.objects.all()])
     context = {
-        'classes': Course.objects.all()
+        'classes': Course.objects.all(),
+		'teaches': data
     }
     return render(request, 'register/course_page.html', context)
 

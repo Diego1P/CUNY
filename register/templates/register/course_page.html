@@ -4,11 +4,17 @@
 	<h1>Student Center</h1>
 
 	{% for class in classes %}
-		<h3> {{ class.course_name }}</h1>
-		<p> {{ class.course_id }} </p>
-		<p> {{ class.instructor }} </p>
-		<p> {{ class.day }} {{ class.time }}</p>
-		<p> {{ class.location }} </p>
+			<h3> {{ class.course_name }}</h1>
+			<p> {{ class.course_id }} </p>
+
+			{% for key, value in teaches.items %}
+				{% if class.course_name == key %}
+					<p> {{ value }} </p>
+				{% endif %}
+			{% endfor %}
+
+			<p> {{ class.days }} {{ class.time }}</p>
+			<p> {{ class.location }} </p>
 	{% endfor %}
 
 {% endblock content %}

@@ -30,6 +30,7 @@ class Profile(models.Model):
 
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	Teacher_or_Student = models.CharField(blank=False, max_length=7, choices=TeacherorStudent)
+	empl_id = models.CharField(max_length=4, default='0000')
 	file = models.FileField(upload_to='uploads')
 
 
