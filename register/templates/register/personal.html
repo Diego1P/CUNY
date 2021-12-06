@@ -1,4 +1,16 @@
 {% extends "register/base.html"%}
 {% block content %}
 	<h1>Personal Page </h1>
+	<p> Username: {{  user.username }}</p>
+    <p> First Name: {{ user.first_name }}</p>
+    <p> Last Name: {{ user.last_name }}</p>
+    <p> Email: {{ user.email }}</p>
+
+	<div>
+		{% for course in enrolled %}
+			<h3> {{ course }} </h3>
+	   {% endfor %}
+	</div>
+
+
 {% endblock content %}

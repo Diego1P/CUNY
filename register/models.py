@@ -10,25 +10,16 @@ def registraion_period():
 class Course(models.Model):
 	course_name = models.CharField(max_length=30, default='-')
 	course_id = models.CharField(max_length=6, default='-')
-	instructor = models.ForeignKey(User, on_delete=models.CASCADE)
+	instructor = models.ManyToManyField(User, through='Teaches')
 	days = models.CharField(max_length=10, default='-')
 	time = models.CharField(max_length=20, default='-')
 	location = models.CharField(max_length=20, default='-')
+	rating = models.CharField(max_length=3, default='5')
+	status = models.CharField(max_length=20, default='open')
 	registraion_window = models.DateTimeField(default=registraion_period)
 
 	def __str__(self):
 		return self.course_name
-
-
-# 	
-#	'course_name' : 'Organic Chemistry 2',
-#	'course_id' : 'CHEM 26300',
-#	'instructor' : 'Mark Biscoe',
-# 	'day' : 'TuThu', 
-#	'time' : '10:00 - 11:50',
-#	'location' : 'online synchronous',
-
-
 
 class Profile(models.Model):
 
@@ -44,3 +35,11 @@ class Profile(models.Model):
 
 	def __str__(self):
 		return self.user.username
+
+class Teaches(models.Model):
+    Instructor = models.ForeignKey(User, on_delete=models.CASCADE)
+    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+class Registered(models.Model):
+    Student = models.ForeignKey(User, on_delete=models.CASCADE)
+    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
