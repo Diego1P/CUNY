@@ -3,22 +3,31 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, UserprofileForm
+from .forms import UserRegisterForm, UserprofileForm, ClassRegisterForm
 from .models import Course, Teaches, Registered, Profile
 from django.views import generic
 import urllib
 
-
+#drop classes on personal page
 def personal(request):
-	usr = request.user
-	enrolled = []
-	for e in Registered.objects.filter(Student = usr.id):		
-		enrolled.append(str(e.Course))
-	context = {
-		'enrolled': enrolled,
-	}
-	#print(context)
-	return render(request, 'register/personal.html',context)
+
+    #registration = Registered.objects.get(id=pk)
+    #if request.method == 'POST':
+    #    registration.delete()
+    #    return redirect('Personal-Page')
+
+    enrolled = []
+    for e in Registered.objects.filter(Student = request.user.id):		
+        enrolled.append(str(e.Course))
+    context = {
+        'enrolled': enrolled,
+        'obj':Registered,
+    }
+    #print(context)
+    return render(request, 'register/personal.html',context)
+
+
+
 
 def landing(request):
     context = {
@@ -29,11 +38,32 @@ def landing(request):
     return render(request, 'register/landing.html', context)
 
 def course(request):
+	# will pass the user register form here,(so student can register)
+    usr = request.user
+    form = ClassRegisterForm()
+    if request.method == 'POST':
+        form = ClassRegisterForm(request.POST)
+        if form.is_valid():
+            new_enrollment = Registered.objects.create(
+                Student = request.user,
+                Course = form.cleaned_data["Course"]
+            )
+            new_enrollment.save()
+            messages.success(request, f'You have registerd for the class successfully!')			
+            return redirect('Personal-Page')
+        else:
+            print("ERROR : Form is invalid")
+            print(form.errors)
+
+
+    #seding courses to the context below...
     data = dict([(str(e.Course), str(e.Instructor)) for e in Teaches.objects.all()])
     context = {
         'classes': Course.objects.all(),
-		'teaches': data
+		'teaches': data, 
+		'form': form,
     }
+	
     return render(request, 'register/course_page.html', context)
 
 def register(request):

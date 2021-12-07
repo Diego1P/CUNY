@@ -1,8 +1,9 @@
 {% extends "register/base.html"%}
+{% load crispy_forms_tags %}
 {% block content %}
 	
 	<h1>Student Center</h1>
-	<div class="container"> 
+		<div class="container"> 
 
 				<table class="table table-bordered">
 
@@ -51,6 +52,19 @@
 					</tbody>
 				</table>
 
+			</div>
+
+			<div class="content-section">
+				<form action="" method="POST">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						<legend class="border-bottom mb-4">Register for a course here</legend>
+						{{ form|crispy }}
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-info" type="submit">Register</button>
+					</div>
+				</form>
 			</div>
 
 		</div>

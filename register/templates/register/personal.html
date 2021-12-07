@@ -1,4 +1,5 @@
 {% extends "register/base.html"%}
+{% load crispy_forms_tags %}
 {% block content %}
 
 
@@ -7,12 +8,28 @@
     <p> First Name: {{ user.first_name }}</p>
     <p> Last Name: {{ user.last_name }}</p>
     <p> Email: {{ user.email }}</p>
+	
+	<table class="table table-bordered">
+		<thead>
+		  <tr>
+			<th scope="col">Your Courses</th>
+		  </tr>
+		</thead>
+		<tbody>
+			
+			{% for course in enrolled %}
+			<tr>
+				<form method='POST' action="">
+					{% csrf_token %}
+					<td> {{ course }}  {{ course.id }}<input type="submit" value="DROP" /> </td>
+				</form>
+		
+		 	</tr>
 
-	<div>
-		{% for course in enrolled %}
-			<h3> {{ course }} </h3>
-	   {% endfor %}
-	</div>
+			{% endfor %}
+		</tbody>
+	</table>
+
 
 
 {% endblock content %}
