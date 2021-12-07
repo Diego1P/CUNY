@@ -2,37 +2,70 @@
 {% block content %}
 	
 	<h1>Student Center</h1>
+	<div class="container"> 
 
-	{% for class in classes %}
-			<h3> {{ class.course_name }}</h1>
-			<p> {{ class.course_id }} </p>
+				<table class="table table-bordered">
 
-			{% for key, value in teaches.items %}
-				{% if class.course_name == key %}
-					<p> {{ value }} </p>
-				{% endif %}
-			{% endfor %}
+					<thead>
+						<tr>
+						  <th scope="row"> Courses </th>
+						  <th scope="row"> Course Id </th>
+						  <th scope="row"> Instructor </th>
+						  <th scope="row"> Days </th>
+						  <th scope="row"> Rating </th>
+						  <th scope="row"> Location </th>
+						  <th scope="row"> Status </th>
+						</tr>
+					  </thead>
+					
+					<tbody>
+					{% for class in classes %}
+					
+					  <tr>
 
-			<p> {{ class.days }} {{ class.time }}</p>
-			<p> {{ class.location }} </p>
-	{% endfor %}
+						<th scope="col"> {{ class.course_name }}</th>						
+						<td> {{ class.course_id }} </td>
+						
+						{% for key, value in teaches.items %}
+						{% if class.course_name == key %}
+							<td> {{ value }} </td>
+						{% endif %}
+						{% endfor %}
+
+						<td> {{ class.days }} {{ class.time }} </td>
+						<td> {{ class.rating }} </td>
+						
+						<td> {{ class.location }} </td>
+
+						{% if class.status == 'open' %}
+							<td> OPEN </td>
+						{% elif class.status == 'full' %}
+							<td> FULL  </td>
+						{% else %}
+							<td> CLOSED </td>
+						{% endif %}	
+
+					  </tr>
+
+					{% endfor %}
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+	
 
 {% endblock content %}
 
-
-
-
 <!--
-
-classes = [
-
- {
- 	'course_name' : 'Software Engineering',
- 	'course_id' : 'CSC 32200'
- 	'instructor' : 'Jie Wei',
- 	'day' : 'TuThu', 
- 	'time' : '12:00 - 14:15',
- 	'location' : 'online synchronous',
- }
-
+	{% for class in classes %}
+		<h3> {{ class.course_name }}</h1>
+		<p> {{ class.course_id }} </p>
+		<p> {{ class.instructor }} </p>
+		<p> {{ class.day }} {{ class.time }}</p>
+		<p> {{ class.location }} </p>
+	{% endfor %}
 -->
