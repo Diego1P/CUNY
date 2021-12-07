@@ -4,9 +4,6 @@
 	<h1>Student Center</h1>
 	<div class="container"> 
 
-		<div class="row align-items-center">
-			<div class="row">
-
 				<table class="table table-bordered">
 
 					<thead>
@@ -16,8 +13,8 @@
 						  <th scope="row"> Instructor </th>
 						  <th scope="row"> Days </th>
 						  <th scope="row"> Rating </th>
+						  <th scope="row"> Location </th>
 						  <th scope="row"> Status </th>
-
 						</tr>
 					  </thead>
 					
@@ -28,9 +25,17 @@
 
 						<th scope="col"> {{ class.course_name }}</th>						
 						<td> {{ class.course_id }} </td>
-						<td> {{ class.instructor }}</td>
+						
+						{% for key, value in teaches.items %}
+						{% if class.course_name == key %}
+							<td> {{ value }} </td>
+						{% endif %}
+						{% endfor %}
+
 						<td> {{ class.days }} {{ class.time }} </td>
 						<td> {{ class.rating }} </td>
+						
+						<td> {{ class.location }} </td>
 
 						{% if class.status == 'open' %}
 							<td> OPEN </td>
@@ -39,7 +44,6 @@
 						{% else %}
 							<td> CLOSED </td>
 						{% endif %}	
-
 
 					  </tr>
 
