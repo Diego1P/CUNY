@@ -2,7 +2,61 @@
 {% block content %}
 	
 	<h1>Student Center</h1>
+	<div class="container"> 
 
+		<div class="row align-items-center">
+			<div class="row">
+
+				<table class="table table-bordered">
+
+					<thead>
+						<tr>
+						  <th scope="row"> Courses </th>
+						  <th scope="row"> Course Id </th>
+						  <th scope="row"> Instructor </th>
+						  <th scope="row"> Days </th>
+						  <th scope="row"> Rating </th>
+						  <th scope="row"> Status </th>
+
+						</tr>
+					  </thead>
+					
+					<tbody>
+					{% for class in classes %}
+					
+					  <tr>
+
+						<th scope="col"> {{ class.course_name }}</th>						
+						<td> {{ class.course_id }} </td>
+						<td> {{ class.instructor }}</td>
+						<td> {{ class.days }} {{ class.time }} </td>
+						<td> {{ class.rating }} </td>
+
+						{% if class.status == 'open' %}
+							<td> OPEN </td>
+						{% elif class.status == 'full' %}
+							<td> FULL  </td>
+						{% else %}
+							<td> CLOSED </td>
+						{% endif %}	
+
+
+					  </tr>
+
+					{% endfor %}
+					</tbody>
+				</table>
+
+			</div>
+
+		</div>
+
+	</div>
+	
+
+{% endblock content %}
+
+<!--
 	{% for class in classes %}
 		<h3> {{ class.course_name }}</h1>
 		<p> {{ class.course_id }} </p>
@@ -10,23 +64,4 @@
 		<p> {{ class.day }} {{ class.time }}</p>
 		<p> {{ class.location }} </p>
 	{% endfor %}
-
-{% endblock content %}
-
-
-
-
-<!--
-
-classes = [
-
- {
- 	'course_name' : 'Software Engineering',
- 	'course_id' : 'CSC 32200'
- 	'instructor' : 'Jie Wei',
- 	'day' : 'TuThu', 
- 	'time' : '12:00 - 14:15',
- 	'location' : 'online synchronous',
- }
-
 -->

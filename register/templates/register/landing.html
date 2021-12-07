@@ -53,8 +53,8 @@
 					{% for student in students %}
 
 					  <tr>
-						<th scope="row">{{ student.user.first_name }}</th>
-						<td>{{ student.user.last_name }} </td>
+						<th scope="row">{{ student.user.first_name }} {{ student.user.last_name }} </th>
+						<td>{{ student.user.id }} </td>
 					  </tr>
 
 					{% endfor %}
