@@ -42,12 +42,12 @@ class ClassRegisterForm(forms.ModelForm):
         model = Registered
         fields = ['Course']
     	
-    def enrolled(self):
-        cleaned_data = super(ClassRegisterForm, self).enrolled()
+    def clean(self):
+        cleaned_data = super(ClassRegisterForm, self).clean()
         registering = cleaned_data.get("Course")
         print(registering)
         enrolled = []
-        for e in Registered.objects.filter(Student = request.user):		
+        for e in Registered.objects.filter(Student = request.user.id):		
             enrolled.append(str(e.Course))
 
         if registering in enrolled:
