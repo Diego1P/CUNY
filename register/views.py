@@ -1,11 +1,14 @@
+from django.contrib.auth import models
+from django.db.models.fields import files
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserprofileForm, ClassRegisterForm
-from .models import Course, Teaches, Registered, Profile
-from django.views import generic
+from .models import Course, Teaches, Registered, Profile, Comment
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 import urllib
 
 #drop classes on personal page
@@ -35,7 +38,6 @@ def deletepersonal(request, pk):
     messages.success(request, f'You have dropped for the class successfully!')
     return redirect('Personal-Page')
 
-
 def landing(request):
     context = {
         'classes': Course.objects.all(),
@@ -43,6 +45,12 @@ def landing(request):
     }
     #print(context)
     return render(request, 'register/landing.html', context)
+
+def commnets(request):
+    context = {
+        'comments': Comment.objects.all()
+    }
+    return render(request, 'register/comment_list.html', context)
 
 def course(request):
 	# will pass the user register form here,(so student can register)
@@ -61,7 +69,6 @@ def course(request):
         else:
             print("ERROR : Form is invalid")
             print(form.errors)
-
 
     #seding courses to the context below...
     data = dict([(str(e.Course), str(e.Instructor)) for e in Teaches.objects.all()])
@@ -101,3 +108,48 @@ def register(request):
 @login_required
 def profile(request):
     return render(request, 'register/profile.html')
+
+@login_required
+def complain(request):
+    return render(request, 'register/complains.html')
+
+class commentListView(ListView):
+    model = Comment
+    template_name = 'register/comment_list'
+    context_object_name = 'comments'
+    ordering = ['date_posted']
+
+class commentDetailView(DetailView):
+    model = Comment
+
+class commentCreateView(LoginRequiredMixin ,CreateView):
+    model = Comment
+    fields = ['title', 'comment']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+class commentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comment
+    fields = ['title', 'comment']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        comment = self.get_object()
+        if self.request.user == comment.user:
+            return True
+        return False
+
+class commentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    success_url = '/'
+
+    def test_func(self):
+        comment = self.get_object()
+        if self.request.user == comment.user:
+            return True
+        return False

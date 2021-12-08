@@ -2,6 +2,7 @@ from typing_extensions import Required
 from django.db import models
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 def registraion_period():
@@ -44,3 +45,15 @@ class Teaches(models.Model):
 class Registered(models.Model):
     Student = models.ForeignKey(User, on_delete=models.CASCADE)
     Course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+class Comment(models.Model):
+	user = models.ForeignKey(User, on_delete=models.CASCADE)
+	title = models.CharField(max_length=20)
+	comment = models.TextField(max_length=200)
+	date_posted = models.DateTimeField(default=registraion_period)
+	
+	def _str_(self):
+		return self.title
+
+	def get_absolute_url(self):
+		return reverse('comment-detail', kwargs={'pk': self.pk})
