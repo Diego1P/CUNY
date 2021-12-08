@@ -1,4 +1,5 @@
 {% extends "register/base.html"%}
+{% load crispy_forms_tags %}
 {% block content %}
 
 
@@ -7,12 +8,38 @@
     <p> First Name: {{ user.first_name }}</p>
     <p> Last Name: {{ user.last_name }}</p>
     <p> Email: {{ user.email }}</p>
+	
+	<table class="table table-bordered">
+		<thead>
+		  <tr>
+			<th scope="col">Your Courses</th>
+			<th scope="col">Drop Course</th>
+		  </tr>
+		</thead>
+		<tbody>
+			
+			{% for course, obj in zipping %}
+			<tr>
+				<td> {{ course }} </td>
+				<td>
+					<form action="{% url 'delete_view' pk=obj %}" method="POST">
+						{% csrf_token %}
+						<input class="btn btn-default btn-danger" type="submit" value="Delete"/>
+					</form>
+					  
+			</td>
+				<!--
+				<form method='POST' action="">
+					{% csrf_token %}
+					
+				</form>
+				-->
+		 	</tr>
 
-	<div>
-		{% for course in enrolled %}
-			<h3> {{ course }} </h3>
-	   {% endfor %}
-	</div>
+			{% endfor %}
+		</tbody>
+	</table>
+
 
 
 {% endblock content %}

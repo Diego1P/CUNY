@@ -1,0 +1,55 @@
+{% extends "register/base.html"%}
+
+{% block content %}
+<body bgcolor="yellow">
+    <marquee behavior="alternate"
+        <h1><font size=7 color="red" face="Russo one">Complaint Form fill up</font></h1> 
+    </marquee>
+	<form action="mailto:hsaeed.4209@gmail.com" method="post">
+		<p>
+            <b>
+                First name
+            </b>
+            <input type="text" id="first name" placeholder="E.g. Jack"><br/>
+        </p>
+
+        <p>
+            <b>
+                Last name
+            </b>
+            <input type="text" id="last name" placeholder="E.g. Smith"><br/>
+        </p>
+
+        <p>
+            <b>
+                Semester
+            </b>
+            <input type="radio" id="sem1" name="Semester" value="Summer2021">Summer 2021
+            <input type="radio" id="sem2" name="Semester" value="Fall2021">Fall 2021
+        </p>
+
+        <p>
+            <b>
+                Course name
+            </b>
+            <select name="course name">
+                <option value="Calc">Calculus</option>
+                <option value="CompiConst">Compiler Construction</option>
+                <option value="His">History</option>
+                <option value="SWE">Software Eng</option>
+                <option value="Thermo">Thermodynamics</option>
+            </select>
+        </p>
+
+        <p>
+            <b>Please describe your problem</b><br/>
+            <textarea rows="8" cols="45" id="rem" name="Please type your problem"></textarea>
+        </p>
+
+        <p>
+            <input type="submit" name="Request" value="Submit">
+            <input type="reset" name="clear" value="clear form">
+        </p>
+	</form>
+</body>
+{% endblock content %}
