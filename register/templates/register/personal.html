@@ -17,13 +17,22 @@
 		</thead>
 		<tbody>
 			
-			{% for course in enrolled %}
+			{% for course, obj in zipping %}
 			<tr>
+				<td> {{ course }} </td>
+				<td>
+					<form action="{% url 'delete_view' pk=obj %}" method="POST">
+						{% csrf_token %}
+						<input class="btn btn-default btn-danger" type="submit" value="Delete"/>
+					</form>
+					  
+			</td>
+				<!--
 				<form method='POST' action="">
 					{% csrf_token %}
-					<td> {{ course }}  {{ course.id }}<input type="submit" value="DROP" /> </td>
+					
 				</form>
-		
+				-->
 		 	</tr>
 
 			{% endfor %}

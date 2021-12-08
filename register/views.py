@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserprofileForm, ClassRegisterForm
@@ -9,7 +9,7 @@ from django.views import generic
 import urllib
 
 #drop classes on personal page
-def personal(request):
+def personal(request, course_id = None):
 
     #registration = Registered.objects.get(id=pk)
     #if request.method == 'POST':
@@ -17,16 +17,23 @@ def personal(request):
     #    return redirect('Personal-Page')
 
     enrolled = []
+    regobj = []
     for e in Registered.objects.filter(Student = request.user.id):		
-        enrolled.append(str(e.Course))
+        enrolled.append(e.Course)
+        regobj.append(e.id)
+    zipping = zip(enrolled, regobj)    
     context = {
-        'enrolled': enrolled,
-        'obj':Registered,
+        'zipping': zipping
     }
+    print(regobj)
     #print(context)
     return render(request, 'register/personal.html',context)
 
-
+def deletepersonal(request, pk):
+    obj = get_object_or_404(Registered, pk=pk)
+    obj.delete()
+    messages.success(request, f'You have dropped for the class successfully!')
+    return redirect('Personal-Page')
 
 
 def landing(request):
