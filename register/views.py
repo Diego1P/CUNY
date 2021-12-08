@@ -26,10 +26,11 @@ def personal(request, course_id = None):
         regobj.append(e.id)
     zipping = zip(enrolled, regobj)    
     context = {
-        'zipping': zipping
+        'zipping': zipping,
+        'len':regobj
     }
-    print(regobj)
-    #print(context)
+    print('Context is llksajfljasdl;fjl;asjdf;lasjdf;ljkasd;flkjasdl;kfj')
+    print(context)
     return render(request, 'register/personal.html',context)
 
 def deletepersonal(request, pk):

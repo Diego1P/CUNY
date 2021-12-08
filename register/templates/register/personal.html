@@ -17,6 +17,17 @@
 		  </tr>
 		</thead>
 		<tbody>
+
+			{% if len|length >= 3 %}
+			<div class="alert alert-info alert-dismissible fade show">
+				<strong>Info!</strong> You are registered as full time.
+			</div>
+			{% else %}
+			<div class="alert alert-warning alert-dismissible fade show">
+				<strong>Warning!</strong> You are registered for less than 3 classes.
+			</div>
+			{% endif %}
+	
 			
 			{% for course, obj in zipping %}
 			<tr>

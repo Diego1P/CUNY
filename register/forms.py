@@ -38,16 +38,17 @@ class UserprofileForm(forms.ModelForm):
 
 #register for a class
 class ClassRegisterForm(forms.ModelForm):
+
     class Meta:
         model = Registered
         fields = ['Course']
     	
-    def clean(self):
-        cleaned_data = super(ClassRegisterForm, self).clean()
+    def cleaned(self):
+        cleaned_data = super(ClassRegisterForm, self).cleaned()
         registering = cleaned_data.get("Course")
         print(registering)
         enrolled = []
-        for e in Registered.objects.filter(Student = request.user.id):		
+        for e in Registered.objects.filter(Student = usr.id):		
             enrolled.append(str(e.Course))
 
         if registering in enrolled:
