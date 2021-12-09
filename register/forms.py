@@ -3,12 +3,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 from register.models import Registered
+from register.validators import validate_is_profane
 
 
 # Choice teacher or student
 class UserRegisterForm(UserCreationForm):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100)
+    first_name = forms.CharField(max_length=100, validators=[validate_is_profane])
+    last_name = forms.CharField(max_length=100, validators=[validate_is_profane])
     email = forms.EmailField(required=True)
 
     class Meta:

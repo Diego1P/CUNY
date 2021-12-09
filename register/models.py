@@ -3,7 +3,7 @@ from django.db import models
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.urls import reverse
-from validators import validate_is_profane
+from register.validators import validate_is_profane
 
 
 def registraion_period():
