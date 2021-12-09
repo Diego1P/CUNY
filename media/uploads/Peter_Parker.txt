@@ -1,13 +1,13 @@
-Bruce Wayne
+Peter Parker
 
-117 Sunrise Dr
-Winnebago, Nebraska(NE), 68071
+706 State 85 Rte W
+Sacramento, Kentucky(KY), 42372
 
-(402) 878-4365
+(951) 926-2885
 
-bruce_wayne@cuny.edu
+peter_parker@hotmail.com
 
-GPA: 3.5
+GPA: 4.0
 
 Odio facilisis mauris sit amet massa vitae tortor. 
 Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio.
@@ -24,9 +24,5 @@ WORK EXPERIENCE
 
 EDUCATION
 
-<<<<<<< HEAD
 	Bachelor of Science, Bellevue University, Bellevue, NE
 
-=======
-	Bachelor of Science, Bellevue University, Bellevue, NE
->>>>>>> f28e32b330f3d5bd8401b09a8adfe426160fa55c

@@ -24,4 +24,9 @@ WORK EXPERIENCE
 
 EDUCATION
 
+<<<<<<< HEAD
 	Bachelor of Science, Bellevue University, Bellevue, NE
+
+=======
+	Bachelor of Science, Bellevue University, Bellevue, NE
+>>>>>>> f28e32b330f3d5bd8401b09a8adfe426160fa55c

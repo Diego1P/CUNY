@@ -3,6 +3,7 @@ from django.db import models
 from datetime import datetime, timedelta
 from django.contrib.auth.models import User
 from django.urls import reverse
+from register.validators import validate_is_profane
 
 
 def registraion_period():
@@ -48,8 +49,8 @@ class Registered(models.Model):
 
 class Comment(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
-	title = models.CharField(max_length=20)
-	comment = models.TextField(max_length=200)
+	title = models.CharField(max_length=20, validators=[validate_is_profane])
+	comment = models.TextField(max_length=200, validators=[validate_is_profane])
 	date_posted = models.DateTimeField(default=registraion_period)
 	
 	def _str_(self):

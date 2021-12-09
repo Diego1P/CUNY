@@ -1,13 +1,13 @@
-Bruce Wayne
+shaam saeed
 
-117 Sunrise Dr
-Winnebago, Nebraska(NE), 68071
+13050 NW Hawthorne Dr
+Platte City, Missouri(MO), 64079
 
-(402) 878-4365
+(816) 431-6776
 
-bruce_wayne@cuny.edu
+hsaeed.4209@gmail.com
 
-GPA: 3.5
+GPA: 2.0
 
 Odio facilisis mauris sit amet massa vitae tortor. 
 Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio.
@@ -24,9 +24,5 @@ WORK EXPERIENCE
 
 EDUCATION
 
-<<<<<<< HEAD
 	Bachelor of Science, Bellevue University, Bellevue, NE
 
-=======
-	Bachelor of Science, Bellevue University, Bellevue, NE
->>>>>>> f28e32b330f3d5bd8401b09a8adfe426160fa55c
