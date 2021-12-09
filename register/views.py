@@ -26,9 +26,10 @@ def personal(request, course_id = None):
         regobj.append(e.id)
     zipping = zip(enrolled, regobj)    
     context = {
-        'zipping': zipping
+        'zipping': zipping,
+        'len':regobj,
+        'profile':Profile.objects.filter(user = request.user)
     }
-    print(regobj)
     #print(context)
     return render(request, 'register/personal.html',context)
 
