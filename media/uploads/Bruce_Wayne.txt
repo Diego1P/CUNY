@@ -1,0 +1,27 @@
+Bruce Wayne
+
+117 Sunrise Dr
+Winnebago, Nebraska(NE), 68071
+
+(402) 878-4365
+
+bruce_wayne@cuny.edu
+
+GPA: 3.5
+
+Odio facilisis mauris sit amet massa vitae tortor. 
+Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio.
+
+SUMMARY OF SKILLS
+
+	Proficient in MS Office (Word, Excel, PowerPoint, Outlook), QuickBooks
+	Basic Knowledge of MS Access, SQL, Visual Basic, C++
+
+WORK EXPERIENCE
+
+	Student Intern, Financial Accounting Development Program, Mutual of Omaha, Omaha, NE
+	(Summer 2020)
+
+EDUCATION
+
+	Bachelor of Science, Bellevue University, Bellevue, NE

@@ -1,0 +1,27 @@
+Clark Kent
+
+706 State 85 Rte W
+Sacramento, Kentucky(KY), 42372
+
+(270) 736-2922
+
+clark_kent@cuny.edu
+
+GPA: 5.0
+
+Odio facilisis mauris sit amet massa vitae tortor. 
+Pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum odio.
+
+SUMMARY OF SKILLS
+
+	Proficient in MS Office (Word, Excel, PowerPoint, Outlook), QuickBooks
+	Basic Knowledge of MS Access, SQL, Visual Basic, C++
+
+WORK EXPERIENCE
+
+	Student Intern, Financial Accounting Development Program, Mutual of Omaha, Omaha, NE
+	(Summer 2020)
+
+EDUCATION
+
+	Bachelor of Science, Bellevue University, Bellevue, NE

@@ -13,6 +13,7 @@
 						<th scope="col"> Course Id </th>
 						<th scope="col">Rating</th>
 						<th scope="col">Staus</th>
+						<th scope="col">Registration Window</th>
 					  </tr>
 					</thead>
 					<tbody>
@@ -30,6 +31,8 @@
 						{% else %}
 							<td> <button type="button" class="btn btn-danger">CLOSED</button> </td>
 						{% endif %}			
+
+						<td>{{ class.registraion_window }} </td>
 
 					  </tr>
 
